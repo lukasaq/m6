@@ -1,0 +1,39 @@
+search KEY: **important command
+	      images
+
+commands: ###################################
+SET /A seven=4+3 :  doing small math out put is 7
+set : display all the variables defined for the current CMD session
+set PATH=%PATH%C:\NewFolder; : following command to set the path variable by adding an item to the list (semicolon delimited)
+setx PATH "%PATH%C:\NewFolder;" : following command to update the PATH variable for the current shell and save the setting across future logins: 
+      				Generally, the setx command should only be used when permanently altering the environment variable is desired. 
+			        setx command operates off the current user, rather than system environment variables by default. To learn more about this command, run setx /?.
+
+set /a total=total+1 : makes total = 1
+set /a total+=1 : adds 1 to  total making in 2
+if statement commands: ###############
+if not exist "C:\NewFolder\NULL" mkdir "C:\NewFolder" : if does not exits will make 
+for loop commands: ####################
+for %variable IN (set) DO command [command-parameters] : basic syntax
+for /l %%variable in (start,step,end) do (command) : basic Stepping through a series of values:
+for /l %%A in (0,2,10) do echo %%A : Stepping through a series of values example
+for %%variable in (fileSet) do (command) : basic Looping through files
+for %%B in (%USERPROFILE%\Desktop\*) do echo %%B : Looping through files example
+for /d %%variable in (directorySet) do (command) : basic Looping through directories
+for /d %%C in (%PUBLIC%\* %USERPROFILE%\*) do echo %%C : Looping through directories example
+**important command : for /r "%USERPROFILE%" %%D in (*) do echo %%D : Looping through directories, recursively: **
+**important command : for /r "%USERPROFILE%" %%D in (*.bat) do echo %%D : Looping through directories, recursively: **
+for /f ["options"] %%variable in (source) do (command) : basic Parsing File Content and Output
+@echo off
+for /f "tokens=1-4" %%A in (hosts.txt) do ( echo host: %%A IP Address: %%B Department: %%C Email: %%D) : Parsing File Content and Output example
+Gather System Information commands: ##############
+note pad plugin: (one)
+host_baseline.bat cda-win-hunt_baseline.txt : will output to file from  (one)
+dir host* : check for host
+host_baseline_autodelete.bat cda-win-hunt_baseline2.txt : ran will give systeminfo then auto delte itself
+dir host* :  verifgfy that it deleted it self
+powershell commands: ################
+
+
+
+#########
