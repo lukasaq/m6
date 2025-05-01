@@ -33,7 +33,49 @@ dir host* : check for host
 host_baseline_autodelete.bat cda-win-hunt_baseline2.txt : ran will give systeminfo then auto delte itself
 dir host* :  verifgfy that it deleted it self
 powershell commands: ################
-
+Get-Help New-Item :  Get-Help cmdlet to retrieve the syntax for the New-Item cmdlet
+Get-Help New-Item -full : more verbose listing (-full)
+Get-Help New-Item -examples : can show examples (-examples). The examples are included in the -full output.
+New-Item -Path 'C:\users\trainee\temp' -ItemType Directory : creates new directory "temp"
+Copy-Item 'C:\users\trainee\temp' 'C:\users\trainee\temp2' : Copy-Item cmdlet is used to copy a directory by passing the path of the directory to be copied and destination path where the folder is to be copied.
+Remove-Item 'C:\users\trainee\temp2' : removes specified directory
+Move-Item 'C:\users\trainee\temp' 'c:\users\trainee\old_temp' : moves item from one place to another will create directory if not already exist
+Rename-Item 'C:\users\trainee\old_temp' 'c:\users\trainee\new_temp' : rename item to
+ Test-Path 'C:\users\trainee\test' : will give true or fales if the directory / folder exist fales does not exsit if true is does
+Test-Path 'C:\users\trainee\new_temp' : true
+dir : check direcoty listing same as "get-childitem"
+powershell scripts: ########################
+Get-ExecutionPolicy :  policy that restricts script execution. A user can check this policy by running the
+Get-Process : Shows the processes currently running on the computer
+Get-Service : Shows the list of services with their status
+Get-Content : Shows the content of the file specified
+Get-Help : cmdlet to view the help for all available cmdlets:
+Parameters : ####################
+Get-Service -Name W* : shows all services whose names start with W:
+Get-Process | Get-Member :  Get-Member command is used to display the parameters for a specific cmdlet (in this example for the Get-Process cmdlet):
+Get-Help Get-Process -Examples : user can make sure the help is current and get examples for a cmdlet (such as Get-Process)
+Start-Process notepad : opens notepad
+Stop-Process [noteopad/PID]: stop process base of name or PID
+pipelines: ###################
+Command-1 | Command-2 | Command-3 : example of piping commands
+Get-Process notepad | Stop-Process : get process notepoad and then stops it
+Get-Service termservice | Start-Service : gets the service termservice and then starts it
+Get-Process | Sort-Object -Property handles : gets list of process and sortys by property handles
+Get-Help Start-Service -Full : determine which of the parameters of the Start-Service cmdlet accepts pipeline input,
+et-Help Start-Service -Parameter * : all serices listed by paramaters
+Scripting in PowerShell: #######################
+Stop-Process -ProcessName chrome : stops google chrome
+ForEach-Object : performs an operation on each item in a collection of input objects
+ Where-Object : provides finer control over the specific properties to filter on and is used in pipelines to specify specific objects to perform actions on.
 
 
 #########
+
+
+
+
+
+
+
+
+
