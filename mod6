@@ -70,12 +70,22 @@ ByPropertyName
 - The parameter accepts input only when the input object has a property with the same name as the parameter.
 - For example, the Name parameter of Start-Service can accept objects that have a Name property. To list the properties of an object, pipe it to Get-Member.
 
+#################  mod 6 lesson 2 ############################
 
 
+image saved: bash file paths
+image saved: bash parameters
+image saved: history event designator 
+image saved: manual section nums
+image saved: ls character
+image saved: permission feilds
+image saved: redirector operators
+image save: list of command : pay attention to sequentially in ;  for && and || logical key word
+
+Bash is also known as the GNU (GNU not Unix) Bourne-Again Shell as it is fully compatible with the previous standard Bourne shell sh.
 
 
-
-
+proc/self directory contains information about the currently running process. 
 
 
 
