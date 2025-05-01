@@ -29,6 +29,10 @@ cli use %
 /r: Each item in a directory tree
 
 powershell: ###############################
+PowerShell is a CLI shell and scripting language designed specifically for system administration. Built on .NET Framework, PowerShell helps Information Technology (IT) professionals control and automate the administration of the Windows OS and applications that run on Windows Server environments. 
+
+The PowerShell scripting environment was designed to extend the capabilities of the Command shell to run PowerShell commands, called cmdlets. Cmdlets are similar to Windows commands, but provide a more extensible scripting language. Windows commands and PowerShell cmdlets are both able to be run in PowerShell, however, the Command shell can only run Windows commands and not PowerShell cmdlets.
+
 
 - Cmdlets: Cmdlets perform common system administration tasks such as managing the registry, services, processes, event logs, and using Windows Management Instrumentation (WMI).
 
