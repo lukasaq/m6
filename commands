@@ -1,6 +1,8 @@
+
 search KEY: **important command
 	      images
 
+################# MOD 6 Lessoin 1 ##################
 commands: ###################################
 SET /A seven=4+3 :  doing small math out put is 7
 set : display all the variables defined for the current CMD session
@@ -69,8 +71,14 @@ ForEach-Object : performs an operation on each item in a collection of input obj
  Where-Object : provides finer control over the specific properties to filter on and is used in pipelines to specify specific objects to perform actions on.
 
 
-#########
-
+################# MOD 6 Lessoin 2 ##################
+parameters: ##########
+MYFIRSTVAR=”This is my first variable” : assigns the string This is my first variable to the variable MYFIRSTVAR.
+HISTCONTROL=$HISTCONTROL:ignorespace : command procceded by space wont show in history command
+man man : manual for th man command syntax info etc
+man n command : n choose number section you wanna look at
+which bash : command to locate the executable bash within the path
+important: chmod u+x script path : chnage perm of file so it can execute
 
 
 
