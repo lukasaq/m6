@@ -1,0 +1,29 @@
+(one)
+--------------------------------------------
+@echo off
+REM This script will perform host configuration commands and display the output to 
+REM the screen/console (con) unless there is a file specified as argument1
+REM This script uses a variable to control the output
+REM If there is no argument, the %OUTPUT% variable is replaced with the
+REM special device  con  which is the console, or screen. 
+
+if "%1"=="" (set OUTPUT==con) else (set OUTPUT=%1)
+
+title "Host Baseline Script"
+echo Starting baseline...
+echo Systeminfo...
+systeminfo > %OUTPUT%
+echo Time...
+time /t >> %OUTPUT%
+echo Services
+sc query state= all >> %OUTPUT%
+echo Scheduled Tasks...
+schtasks >> %OUTPUT%
+Echo Directory tree...
+tree /f /a c:\Users >> %OUTPUT%
+echo Drivers...
+driverquery >> %OUTPUT%
+
+echo Baseline complete.
+-----------------------------------------
+
