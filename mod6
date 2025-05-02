@@ -90,17 +90,36 @@ proc/self directory contains information about the currently running process.
 
 /etc/passwd file format : username:password:user ID:group ID:user name or comment:home directory: command interpreter or shell
 
+##################### mod 6 lesson 3 #############################
+################# Windows Management Instrumentation ######################
 
+image saved wmi architecure
+image saved wmi table
+image saved wmi table global switches
+important image saved : wmic alias most important 
+image saved wmic operator wild card
 
+WMI Architecture
+WMI is a valuable tool for system administrators to aid in configuring local and remote Windows systems, but it is also frequently abused by threat actors during MCAs. Threat actors continue to use WMI to aid in discovery and remote execution as a part of lateral movement. (**WMI relies on the WMI service for local/remote access, Server Message Block (SMB), and Remote Procedure Calls (RPC), over Transmission Control Protocol (TCP) port 135, to function**). Put simply, this means WMI uses TCP port 135 to initiate communication with the remotely managed host, then switches to any random high port anywhere between TCP port 1024-65535. Some of the data threat groups can gain from using WMI include obtaining a list of all domain administrators, identifying any installed antivirus software, and listing all the running processes. 
 
+WMI Architecture
+WMI consists of three main components: WMI providers and the associated managed objects, WMI infrastructure, and WMI consumers or management applications such as WMIC and PowerShell. The implementation of WMI provides a consistent standard framework for interacting with various objects and management data. The WMI API converts the standard interface into the various system and library calls associated with the specific providers handling the managed objects.
 
+class = object
 
+WMI Infrastructure — WMI service — winmgmt — is the system component known as WMI Infrastructure. This service has two components: Common Information Model (CIM) Object Manager (COMOM) or WMI Core, and the WMI (also known as the CIM) Repository. The WMI repository is organized by hierarchically defined namespaces starting with root. Some of the namespaces created by the WMI service on system startup are the root\default and (**root\cimv2**) namespaces. The Win32 provider classes are installed as part of these namespaces. The WMI service handles the requests from the management applications and the WMI repository and providers.
 
+WMI Consumers — A management application, like WMIC and PowerShell, that sends requests to the WMI service. Management applications query data, enumerate data, execute provider methods, and subscribe to events using the appropriate API. Applications only access the objects and methods that a WMI provider has defined and can handle.
 
+wimc not used im powershell or on linux will not work
 
+wmi table global switches
+/NAMESPCAE:Root\CIMV2
+/NODE: "cda-win-hunt or ip of host"
+/USER use as domain\user cda\trainee
+/PASSWORD
 
-
-
+PowerShell and WMI ####################
 
 
 
