@@ -79,6 +79,99 @@ man man : manual for th man command syntax info etc
 man n command : n choose number section you wanna look at
 which bash : command to locate the executable bash within the path
 important: chmod u+x script path : chnage perm of file so it can execute
+./<criptname> : execute a script 
+
+write script: ####################
+nano <scriptname>
+copy script to nano
+CTRL + x
+y
+enter
+chmod u+x <script>
+./<script>
+find command
+find /var/log -name "*.log : Find files that have an extension of .log
+grep command: ################
+grep [OPTIONS] PATTERN [FILE...]--help — Output a usage message and exit
+-E, --extended-regexp — Interpret the pattern as an extended regular expression
+-F, --fixed-strings — Interpret the pattern as a list of fixed strings instead of regular expressions
+-G, --basic-regexp — Interpret the pattern as a basic regular expression (default)
+-P, --perl-regexp — Interpret the pattern as a Perl regular expression-e PATTERN, --regexp=PATTERN — Use PATTERN as the pattern. Multiple 
+-e can be used to specify different search patterns
+-f FILE, --file=FILE — Obtain patterns from FILE, one per line
+-i, --ignore-case — Ignore case distinction in both the PATTERN and the input files
+-v, --invert-match — Invert the sense of matching (select the non-matching lines)
+-w, --word-regexp — Only return lines containing matches that form whole words
+-x, --line-regexp — Only return matches that exactly match the whole line
+-c, --count — Suppress normal output and only print a count of matching lines for each input file
+-L, --files-without-match — Suppress normal output and only print the name of each input file which have no matches to the PATTERN
+-l, --files-with-matches — Suppress normal output and print the name of each input file which have matches to the PATTERN
+-n, --line-number — Prefix each line of output with the line number within its input file
+-A NUM, --after-context=NUM — Print NUM lines of trailing context after matching lines
+-B NUM, --before-context=NUM — Print NUM lines of leading context before matching lines
+-C NUM, --context=NUM — Print NUM lines of both input and output context
+-r, --recursive — Read all files under each directory, recursively
+grep root /var/log/* : Find the word root in all files in the /var/log directory:
+grep -r root /var/log/* : Find the word root recursively in all files below the /var/log directory
+dmesg | grep -C 2 boot : Run the dmesg (kernel ring buffer) output through grep and search for the word boot and show two lines before and after the matching line
+dmesg | grep -c boot : Repeat the same as the last, but just show a count of the matching lines
+cat: ########################
+cat : read files to console
+CUT: #########################
+cut command removes sections from each line of a file. When no FILE or when FILE is -, read from standard input. 
+common options are shown below
+cut OPTION... [FILE]...
+-b, --bytes=LIST — Select only these bytes
+-c, --characters=LIST — Select only these characters
+-d, --delimiter=DELIM — Use DELIM instead of TAB for field delimiter
+-f, --fields=LIST — Select only these fields; also print any line that contains no delimiter character, unless -s option is specified
+-s, --only-delimited — Only print lines that contain delimiters
+--output-delimiter=STRING — Use STRING as the output delimiter; the default is to use the input delimiter
+-z, --zero-terminated — Line delimiter is NULL, not newline
+/etc/passwd file format : username:password:user ID:group ID:user name or comment:home directory: command interpreter or shell
+important : cut -d ":" -f1,7 /etc/passwd : cut command extracts specific fields, such as the username and the user’s shell with the following command
+TR command: #################
+ tr command translates or delete characters from standard input;
+cat /etc/hosts | tr [:lower:] [:upper:] : he tr command translates all lower case letters to upper case letters
+sort command: #############
+cut -d":" -f1 /etc/passwd | head -10 | sort : sorts the first 10 usernames in the /etc/passwd file
+diff command ############ 
+ diff command compares files line by line to identify differences. 
+diff dirlist1.txt dirlist2.txt : his example shows differences in the file size of dirlist2.txt and new files dirlist1.txt and newfile:
+kill command #############
+kill command sends a signal to a process or processes. The default signal for kill is SIGTERM
+LSOF Command ###############
+lsof command, or LiSt Open Files, lists standard output file information about files opened by processes
+lsof -p 8854 : display the open files associated with a specific process (in this case, Bash PID 8854):
+lsof +d /tmp : display the open files associated with a directory
+timeout command ###################
+timeout command runs a command with a time limit and kills it if still running after a set duration.
+sed command ####################
+sed stream editor performs basic text transformations on an input stream
+sed 's/host/lost/' /etc/hosts : simple sed command to replace the word host with lost in the file /etc/services
+AWK and GAWK command #######################
+awk and gawk commands are used for pattern scanning and processing of files and standard input.
+awk '{print}' /etc/passwd :  This example does not have a pattern to match, so it matches all lines, and the {print} command prints all lines of the file (snippet shown)
+awk '/bash/ {print}' /etc/passwd : find all and print all lines in the /etc/passwd file that have Bash specified:
+important : awk 'BEGIN { FS=":" }; {print $1,$7}' /etc/passwd : basicly as cut command seen earlier
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
