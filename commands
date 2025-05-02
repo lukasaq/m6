@@ -128,6 +128,7 @@ cut OPTION... [FILE]...
 -s, --only-delimited — Only print lines that contain delimiters
 --output-delimiter=STRING — Use STRING as the output delimiter; the default is to use the input delimiter
 -z, --zero-terminated — Line delimiter is NULL, not newline
+                              1       2       3        4        5                      6                     7
 /etc/passwd file format : username:password:user ID:group ID:user name or comment:home directory: command interpreter or shell
 important : cut -d ":" -f1,7 /etc/passwd : cut command extracts specific fields, such as the username and the user’s shell with the following command
 TR command: #################
@@ -136,7 +137,7 @@ cat /etc/hosts | tr [:lower:] [:upper:] : he tr command translates all lower cas
 sort command: #############
 cut -d":" -f1 /etc/passwd | head -10 | sort : sorts the first 10 usernames in the /etc/passwd file
 diff command ############ 
- diff command compares files line by line to identify differences. 
+diff command compares files line by line to identify differences. 
 diff dirlist1.txt dirlist2.txt : his example shows differences in the file size of dirlist2.txt and new files dirlist1.txt and newfile:
 kill command #############
 kill command sends a signal to a process or processes. The default signal for kill is SIGTERM
@@ -155,24 +156,36 @@ awk '{print}' /etc/passwd :  This example does not have a pattern to match, so i
 awk '/bash/ {print}' /etc/passwd : find all and print all lines in the /etc/passwd file that have Bash specified:
 important : awk 'BEGIN { FS=":" }; {print $1,$7}' /etc/passwd : basicly as cut command seen earlier
 
+##################### mod 6 lesson 3 ####################
+################# Windows Management Instrumentation ######################
 
+get /all /format:list : used to pull information
+wmic path win32_account get /all /format:list
+wmic sysaccount get /all /format:list : command is wmic sys account is alias and then we enumerate
+wmic useraccount get /all /format:list
+important image saved : wmic alias most important 
+important ones in table : Process, Group, Service, Sysaccount, Useraccount
+new allias: rdtoggle : remote desktop protocol
+WMIC Where Clauses ###############
+Where clauses allow filters to be applied to the WMIC command being executed
+wmic process where ”Name like 'svchost%'” get name,processid,parentprocessid,commandline
+image saved wmic operator wild card
+PowerShell and WMI #######################
+get-process explore | get-member
+get-ciminstance -classname win32_process | get member : get ciminstance is how to interact with wmi on powershell
+Get-CIMInstance -ClassName Win32_Process
+Get-CIMInstance -ClassName Win32_Process | Get-Member
 
+Use WMIC to Execute Process-related Commands #################
+important : wmic process list brief : following command to view the currently running processes (list brief can only be used with alias)
+wmic process get /all /format:list : always use list brief first : can not use win32_process with list brief
+wmic process call create notepad.exe :  creates a notepad window tell if successfull and with as success and 1 and not successfull also gives process id
+important : wmic process where processid=2564 call getowner : view the owner of the process created,
+wmic process where name="notepad.exe"
+wmic process where name="notepad.exe" list brief
+wmic process where name="notepad.exe" get /all /format:list
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+wmic alisa action
 
 
 
