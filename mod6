@@ -81,11 +81,15 @@ image saved: ls character
 image saved: permission feilds
 image saved: redirector operators
 image save: list of command : pay attention to sequentially in ;  for && and || logical key word
+image saved: kill signals
 
 Bash is also known as the GNU (GNU not Unix) Bourne-Again Shell as it is fully compatible with the previous standard Bourne shell sh.
 
 
 proc/self directory contains information about the currently running process. 
+
+/etc/passwd file format : username:password:user ID:group ID:user name or comment:home directory: command interpreter or shell
+
 
 
 
