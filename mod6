@@ -82,6 +82,277 @@ image saved: permission feilds
 image saved: redirector operators
 image save: list of command : pay attention to sequentially in ;  for && and || logical key word
 image saved: kill signals
+image saved: wmic formats options
+
+Bash is also known as the GNU (GNU not Unix) Bourne-Again Shell as it is fully compatible with the previous standard Bourne shell sh.
+
+
+proc/self directory contains information about the currently running process. 
+
+/etc/passwd file format : username:password:user ID:group ID:user name or comment:home directory: command interpreter or shell
+
+##################### mod 6 lesson 3 #############################
+################# Windows Management Instrumentation ######################
+
+image saved wmi architecure
+image saved wmi table
+image saved wmi table global switches
+important image saved : wmic alias most important 
+image saved wmic operator wild card
+
+WMI Architecture
+WMI is a valuable tool for system administrators to aid in configuring local and remote Windows systems, but it is also frequently abused by threat actors during MCAs. Threat actors continue to use WMI to aid in discovery and remote execution as a part of lateral movement. (**WMI relies on the WMI service for local/remote access, Server Message Block (SMB), and Remote Procedure Calls (RPC), over Transmission Control Protocol (TCP) port 135, to function**). Put simply, this means WMI uses TCP port 135 to initiate communication with the remotely managed host, then switches to any random high port anywhere between TCP port 1024-65535. Some of the data threat groups can gain from using WMI include obtaining a list of all domain administrators, identifying any installed antivirus software, and listing all the running processes. 
+
+WMI Architecture
+WMI consists of three main components: WMI providers and the associated managed objects, WMI infrastructure, and WMI consumers or management applications such as WMIC and PowerShell. The implementation of WMI provides a consistent standard framework for interacting with various objects and management data. The WMI API converts the standard interface into the various system and library calls associated with the specific providers handling the managed objects.
+
+class = object
+
+WMI Infrastructure — WMI service — winmgmt — is the system component known as WMI Infrastructure. This service has two components: Common Information Model (CIM) Object Manager (COMOM) or WMI Core, and the WMI (also known as the CIM) Repository. The WMI repository is organized by hierarchically defined namespaces starting with root. Some of the namespaces created by the WMI service on system startup are the root\default and (**root\cimv2**) namespaces. The Win32 provider classes are installed as part of these namespaces. The WMI service handles the requests from the management applications and the WMI repository and providers.
+
+WMI Consumers — A management application, like WMIC and PowerShell, that sends requests to the WMI service. Management applications query data, enumerate data, execute provider methods, and subscribe to events using the appropriate API. Applications only access the objects and methods that a WMI provider has defined and can handle.
+
+wimc not used im powershell or on linux will not work
+
+wmi table global switches
+/NAMESPCAE:Root\CIMV2
+/NODE: "cda-win-hunt or ip of host"
+/USER use as domain\user cda\trainee
+/PASSWORD
+
+PowerShell and WMI ####################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+search KEY: **important command
+	      images
+		 
+
+
+################# MOD 6 Lessoin 1 ##################
+###################Command Shell andBatch Files######################
+images: ####################################
+image saved: indicator and description
+image saved: basic commands
+image saved: batch file commands
+image saved: specail variables
+image saved: arithmetic operators
+image saved: comparison operators
+##########
+
+
+for statements: ###########################
+
+The for command is used to iterate each item in a set and perform some action/command. The variable used as the iterator — %variable in the above command outline — is a single character in the range a-z or A-Z, and is referenced as %%a or %%Z (%%z and %%Z are different variables). The use of the extra % operator is used in batch files and not from the CLI (where it is a single %). The various types of iterations are based on the switches below:
+
+batch file use %%
+cli use %
+
+/l: Series of values
+/f: Series of files
+/d: Series of directories
+/r: Each item in a directory tree
+
+powershell: ###############################
+PowerShell is a CLI shell and scripting language designed specifically for system administration. Built on .NET Framework, PowerShell helps Information Technology (IT) professionals control and automate the administration of the Windows OS and applications that run on Windows Server environments. 
+
+The PowerShell scripting environment was designed to extend the capabilities of the Command shell to run PowerShell commands, called cmdlets. Cmdlets are similar to Windows commands, but provide a more extensible scripting language. Windows commands and PowerShell cmdlets are both able to be run in PowerShell, however, the Command shell can only run Windows commands and not PowerShell cmdlets.
+
+
+- Cmdlets: Cmdlets perform common system administration tasks such as managing the registry, services, processes, event logs, and using Windows Management Instrumentation (WMI).
+
+- Task-oriented: PowerShell scripting language is task-based and provides support for existing scripts and CLI tools.
+
+- Consistent design: As cmdlets and system data stores use common syntax, and have common naming conventions, data sharing is easy. The output from one cmdlet can be pipelined to another cmdlet without manipulation.
+
+- imple to use: Simplified, command-based navigation lets users navigate the registry and other data stores similar to the file system navigation.
+
+- Object-based: PowerShell possesses powerful object manipulation capabilities. Objects can be sent to other tools or databases directly.
+
+- Extensible interface: PowerShell is customizable as independent software vendors and enterprise developers can build custom tools and utilities using PowerShell to administer their software.
+
+cmdlet  vs command
+Cmdlets are different from commands in other command-shell environments in the following manners:
+
+- Cmdlets are .NET Framework class objects; not just stand-alone executables. 
+- Cmdlets are easily constructed from as few as a dozen lines of code.
+- Parsing, error presentation, and output formatting are not handled by cmdlets. It is done by the PowerShell runtime.
+- Cmdlets process works on objects not on text stream, and objects can be passed as output for pipelining.
+- Cmdlets are record-based as they process a single object at a time.
+
+pipeline:
+A pipeline is a series of commands connected by pipeline operators (|) (American Standard Code for Information Interchange [ASCII] 124). Each pipeline operator sends the results of the preceding command to the next command. This could be the standard output of a command, or the resulting object, to the next command.
+Example of pipeline syntax: Command-1 | Command-2 | Command-3
+In this example, the objects that Command-1 outputs are sent to Command-2. Command-2 processes the objects and outputs them to Command-3. Command-3 processes the objects and sends them down the pipeline. Once there are no more commands in the pipeline, the results are displayed on the console.
+
+termservice is a service related to rdp without it you could not use rdp 
+
+Cmdlets parameters accept pipeline input in one of two different ways:
+ByValue
+- The parameter accepts values that match the expected .NET type or that can be converted to that type.
+- For example, the Name parameter of Start-Service accepts pipeline input by value. It can accept string objects or objects that can be converted to strings.
+ByPropertyName
+- The parameter accepts input only when the input object has a property with the same name as the parameter.
+- For example, the Name parameter of Start-Service can accept objects that have a Name property. To list the properties of an object, pipe it to Get-Member.
+
+#################  mod 6 lesson 2 ############################
+
+
+image saved: bash file paths
+image saved: bash parameters
+image saved: history event designator 
+image saved: manual section nums
+image saved: ls character
+image saved: permission feilds
+image saved: redirector operators
+image save: list of command : pay attention to sequentially in ;  for && and || logical key word
+image saved: kill signals
+image saved: wmic formats options
 
 Bash is also known as the GNU (GNU not Unix) Bourne-Again Shell as it is fully compatible with the previous standard Bourne shell sh.
 
