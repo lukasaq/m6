@@ -215,6 +215,9 @@ wmic /node:"174.16.1.5" /user:"cda\trainee" useraccount list brief: same as abov
 Get-Help about_Classes : To find out more about PowerShell classes, use the Get-Help command
 Import-Module .\Example.ps1 :  Import the module into the current environment with the Import-Module cmdlet
 
+(Get-ProcessesWithModules | Where ProcessName -eq "Explorer").Modules | Sort : View the loaded modules for a specified process:
+
+important :  Get-Childitem -Path C:\ -Include XmlLite.dll -File -Recurse -ErrorAction SilentlyContinue :  Find the path of all instances of XmlLite.dll 
 
 
 
