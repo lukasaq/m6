@@ -187,6 +187,51 @@ wmic process where name="notepad.exe" get /all /format:list
 
 wmic alisa action
 
+wmic service list brief :  command to view the currently configured services and their status
+wmic service where name="TermService" list /format:list : command to query the status of the TermService service
+TermService is service related to remote desktop
+wmic rdtoggle list
+wmic rdtoggle where AllowTSConnections="0" call SetAllowTSConnections "1" :  setting and change the setting to enable Remote Desktop on the local computer:
+wmic rdtoggle list
+wmic /node:"172.16.5.2" /user:"administrator" rdtoggle list : query the Remote Desktop status on the cda-hr-1 VM at the IP address 172.16.5.2:
+Enter the password: Th1s is 0perational Cyber Training!
+wmic /node:"174.16.1.6" /user:"cda\trainee" os list brief : Use the os alias to retrieve OS information from the cda-dc VM at IP address 174.16.1.6:
+wmic /node:"172.16.5.2" /user:"cda\trainee" /password:"Th1s is 0perational Cyber Training!" process call create "notepad.exe"
+taskkill /f /pid XXXX : force kill process
+wmic product get caption,identifyingnumber,installdate,version : WMIC to list the currently installed software packages
+important : wmic ntevent where "eventtype<3 and LogFile='system' and timegenerated>'20210101'" get eventcode,eventidentifier,recordnumber,sourcename,timegenerated,type : This command retrieves the metadata for all Critical, Error, and Warning events from the system log that were logged from 1 Jan 2021 through present.
+wmic group list brief : Enter the command below to retrieve the configured Windows local groups
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
