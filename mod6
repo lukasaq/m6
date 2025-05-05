@@ -122,18 +122,32 @@ wmi table global switches
 
 PowerShell and WMI ####################
 
+##################### mod 7 lesson 1 ####################
+################# PowerShell Objects, Properties, and Methods ######################
+
+PowerShell scripting is greatly enhanced by producing your own classes, properties, and methods. Classes can be instantiated to produce objects - though, these are not the only types of objects in PowerShell.
 
 
+Objects in PowerShell include:
+- Classes
+- PSCustomObject
+- Hashtables
+
+Classes are objects defined by code with concrete properties and methods. The latter two types of objects are dynamic and may contain any property — they are only distinguished by convention
+
+PowerShell’s class syntax begins with a simple class declaration:
+class ClassName {
+
+}
+
+Methods are defined within a class — a simple method declaration follows:
+[String]SayHello([String]$name){
+    Return ("Hello " + $name + "!")
+}
 
 
-
-
-
-
-
-
-
-
+class is .ps1
+function is .psm1
 
 
 
