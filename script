@@ -1,0 +1,51 @@
+Instructions for Task 4 of 13
+
+Creating Functions and Classes
+
+Creating the Class
+
+Steps 1 - 5.  The final product will look like this.  
+NOTE:  The numbers next to the code represents the line numbers.  The should match up with our code as you copy the script to your Powershell ISE interface.
+
+1 class ProcessDetails {
+2    [int]$ProcessID
+3    [int]$ParentProcessID
+4    [string]$ProcessName
+5    [string]$FIlePath
+6    [string[]]$modules
+7 }
+
+
+Creating a Mapping and Loading Function
+
+Steps 1 - 10
+
+
+
+
+Finished product will look like this
+
+1 class ProcessDetails {
+2    [int]$ProcessID
+3    [int]$ParentProcessID
+4    [string]$ProcessName
+5    [string]$FIlePath
+6    [string[]]$modules
+7 }
+ Function Get-ProcessesWithModules
+ {
+    $processes        = Get-Process
+    $outputProcesses  = New-Object -TypeName "System.Collections.ArrayList"
+    foreach($proc in $processes)
+    {
+        $currentProcess                   = New-Object ProcessDetails
+        $currentProcess.ProcessName       = $proc.ProcessName
+        $currentProcess.ProcessID         = $proc.Id
+        $currentProcess.FilePath          = $proc.MainModule.FileName
+        $currentProcess.Modules           = ($proc.Modules | ForEach{$_.ModuleName})
+        $currentProcess.ParentProcessID   = (Get-CimInstance win32_process | where processid -eq $proc.id).ParentProcessId
+        $outputProcesses.Add($currentProcess) | Out-Null
+    }
+    return $outputProcesses
+ }
+ Export-ModuleMember -Function 'Get-ProcessesWithModules'
