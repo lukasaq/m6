@@ -218,7 +218,7 @@ Import-Module .\Example.ps1 :  Import the module into the current environment wi
 (Get-ProcessesWithModules | Where ProcessName -eq "Explorer").Modules | Sort : View the loaded modules for a specified process:
 
 important :  Get-Childitem -Path C:\ -Include XmlLite.dll -File -Recurse -ErrorAction SilentlyContinue :  Find the path of all instances of XmlLite.dll 
-
+(Get-ProcessesWithModules | Where ProcessName -eq 'explorer').Modules | where {$_.length -eq 12} : file name size so 12 characters
 
 
 
