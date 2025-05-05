@@ -151,12 +151,36 @@ function is .psm1
 
 
 
+##################### mod 7 lesson 2 ####################
+################# Remote Endpoint Interaction ######################
+
+During the course of duties, situations occur that require the hashing of files — such as comparing artifacts against databases or compiling information for reports. In addition, intelligence briefings often include hashes of known artifacts associated with a particular malware; validating their presence is part of the analyst’s responsibilities. PowerShell hashes files or other artifacts natively via the Get-FileHash cmdlet.
+
+The Get-FileHash cmdlet uses these arguments:
+Algorithm: Hashing algorithm to use, such as Message Digest 5 (MD5), Secure Hashing Algorithm 1 (SHA1), or Secure Hashing Algorithm 256 (SHA256)
+Path: Path to the file to be hashed; accepts wildcards to evaluate multiple files or an array of strings
+
+Use the [Convert]::ToBase64String and [Convert]::FromBase64String methods with one parameter for each (in these examples):
+
+[Convert]::ToBase64String(byte[])
+byte[]: Byte array (binary data) converted to a Base64 string
+return type: String containing the Base64 encoded data
+[Convert]::FromBase64String(string)
+string: String converted to a byte array (binary data)
+eturn type: Byte[] containing the converted data
+
+The [System.IO.File]::WriteAllBytes and [System.IO.File]::ReadAllBytes methods are used with the following parameters:
+[System.IO.File]::WriteAllBytes(string, byte[])
+string: Path to the file to be written
+byte[]: Byte array to be written
+return type: Void (nothing returned)
+[System.IO.File]::ReadAllbytes(string)
+string: Path to the file to be written
+return type: Byte[] containing the file’s contents
 
 
-
-
-
-
+##################### mod 7 lesson 3 ####################
+################# Bash Scripting ######################
 
 
 
