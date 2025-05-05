@@ -201,17 +201,19 @@ taskkill /f /pid XXXX : force kill process
 wmic product get caption,identifyingnumber,installdate,version : WMIC to list the currently installed software packages
 important : wmic ntevent where "eventtype<3 and LogFile='system' and timegenerated>'20210101'" get eventcode,eventidentifier,recordnumber,sourcename,timegenerated,type : This command retrieves the metadata for all Critical, Error, and Warning events from the system log that were logged from 1 Jan 2021 through present.
 wmic group list brief : Enter the command below to retrieve the configured Windows local groups
+important : wmic /node:"174.16.1.3" /user:"cda\trainee" rdtoggle list : query rdtoggle/ term service/
+wmic /node:"174.16.1.5" /user:"cda\trainee" service where name="TermService" list /format:list : same as above more details
+wmic /node:"174.16.1.5" /user:"cda\trainee" useraccount list : query user accounts
+wmic /node:"174.16.1.5" /user:"cda\trainee" useraccount list brief: same as above
+>wmic /node:"174.16.1.5" /user:"cda\trainee" useraccount get /all /format:list : same as pervious more details
 
- 
+##################### mod 7 lesson 1 ####################
+################# PowerShell Objects, Properties, and Methods ######################
 
 
 
-
-
-
-
-
-
+Get-Help about_Classes : To find out more about PowerShell classes, use the Get-Help command
+Import-Module .\Example.ps1 :  Import the module into the current environment with the Import-Module cmdlet
 
 
 
