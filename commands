@@ -221,21 +221,121 @@ important :  Get-Childitem -Path C:\ -Include XmlLite.dll -File -Recurse -ErrorA
 (Get-ProcessesWithModules | Where ProcessName -eq 'explorer').Modules | where {$_.length -eq 12} : file name size so 12 characters
 
 
+##################### mod 7 lesson 2 ####################
+################# Remote Endpoint Interaction ######################
+
+Get-FileHash .\Files\d1ejyvn0.ybv : Hash the file found at Desktop\Files\d1ejyvn0.ybv using the following commands:
+Get-FileHash .\Files\d1ejyvn0.ybv -Algorithm SHA1 : his defaults to SHA256. To use a different hashing algorithm, use the Algorithm argument
+Get-ChildItem '.\Files' | Get-FileHash : gets all hashes in '.\Files'
+Get-FileHash .\Files\* :  Get-FileHash accepts a file path with wildcards (*) in it
+
+Analysts use these PSProviders to search for artifacts (such as autorun entries) to detect persistence or unusual path environment variable entries used in library preference order attacks.
+
+Get-Item: Retrieves an object containing information about a particular item supplied by a PSProvider; uses the following parameter:
+	Path: Location of the item; accepts wild cards, and inferred as the first unnamed parameter (e.g., Get-Item C:\Windows\System32\Hosts)
+Get-ChildItem: Lists all items in a specified or current directory; uses the following parameter:
+	Path: Location of the directory to be enumerated; inferred from the first unnamed parameter (e.g., Get-ChildItem C:\Windows\System32)
+New-Item: Creates a new entry in the specified location; uses the following parameters:
+	Path: Location of the item to be created (i.e., directory/folder/drive)
+	Name: Name of the item to be created
+	Value: Initial value of the new item
+Move-Item: Moves an item to a specified location; uses the following parameters:
+	Path: Location of the file to be moved; inferred from the first unnamed parameter 
+	Destination: Destination filename; inferred from the second unnamed parameter
+Set-Item: Replaces the contents of a specified item with a new value; uses the following parameters:
+	Path: Path of the item to have its value changed
+	Value: New item value
+Remove-Item: Deletes the specified item; uses the following parameter:
+	Path: Path of the item to be removed; inferred from the first unnamed parameter 
+Rename-Item: Renames a specified item; uses the following parameters:
+	Path: Path of the item to be renamed; inferred from the first unnamed parameter 
+	NewName: New item name
+New-PSDrive: Maps a new PowerShell Drive (PSDrive) — used to simplify paths; uses the following parameters:
+	Name: New drive name; addressable via Name:
+	PSProvider: PSProvider that the PSDrive operates under
+	Root: Root path that the PSDrive operates under
+Get-PSProvider: Displays all available PSProviders
+
+Get-PSProvider : list of PSProviders currently available in the PowerShell session
+Get-ChildItem Alias: :  List all current aliases
+New-Item -Path Alias:list -Value "Get-ChildItem" : Create a new alias for Get-ChildItem called list:	
+List Alias: : Test the new alias by listing all aliases again:
+Rename-Item Alias:list enumerate : Change the alias name
+Set-Item Alias:enumerate "Get-Item": Change the value of the alias
+Remove-Item Alias:item : Remove the alias
+Get-Item Alias:gi : Examine an existing alias by name
+gi Alias:gi : Examine an existing alias by name
+Get-ChildItem Alias: | Where Definition -Eq "Get-Item" : Find all aliases for a specific cmdlet
+
+Interacting With the Environment PSProvider ####################
+
+cd Env: : PSProviders interact with regular file commands. Change to the Env: drive:
+ls : List all environment variables
+Get-Item Path : Examine the Path environment variable:
+(Get-Item Path).Value : use the Value property instead to view the entire variable:
+$path = $Env:Path : Add a path to the Path environment variable: :  Add a path to the Path environment variable step1
+$path = $path + "C:\Users\trainee\Documents\Samples;" :  Add a path to the Path environment variable step 2
+Set-Item Path $path :  Add a path to the Path environment variable step 3
+PathSample.ps1 : Test the new Path variable
+
+Interacting with the Registry PSProvider #######################
+View Run entries using the HKCU: and HKLM: drives
+Get-Item HKCU:\Software\Microsoft\Windows\CurrentVersion\Run
+Get-Item HKLM:\Software\Microsoft\Windows\CurrentVersion\Run
+
+Use New-PSDrive to create a new drive mapped to a folder:
+New-PSDrive -Name "WCurrentVersion" -PSProvider "Registry" -Root "HKLM:\Software\Microsoft\Windows\CurrentVersion"
+
+Browse the new folder:
+cd WCurrentVersion: 
+ls
+
+Browse the Explorer folder:
+cd Explorer
+ls
+
+ View an item in this folder
+Get-Item 'User Shell Folders'
+
+Interacting Remotely Using PowerShel ###################### 
+
+PowerShell connects to and runs commands on remote computers. Some commands run without further reconfiguration, however, many remote commands require Windows Remote Management (WinRM)
+
+Get-Credential: Stores credentials after prompting for them; used with commands that require them, such as Invoke-Command or New-PSSession
+Invoke-Command: Runs a code block or script file on the local or a specified remote machine; uses the following parameters:
+	Credential: Created via Get-Credential; used to connect to the remote computer
+	ComputerName: Name of the computer to run commands on; accepts multiple computer names; must be resolvable via Domain Name System (DNS) or other name lookup
+	ScriptBlock: Block of code to be run
+	FilePath: File containing the script to be run
+	Session: Session to invoke a command on (exclusive with ComputerName)
+New-PSSession (PowerShell Session): Creates a reusable session with the remote computer(s), variables, etc. on the remote session to be saved for the duration of the session.
+	Credential: Created via Get-Credential; used to connect to the remote computer
+	ComputerName: Name of the computer to run commands on; accepts multiple computer names; must be resolvable via DNS or other name lookup
+Invoke-WebRequest: Useful for interacting with web servers. For this lesson, used to download files via the PowerShell terminal.
+	URI (Uniform Resource Identifier): Location of the file to be downloaded, e.g. http://speedtest.tele2.net/10MB.zipMegabyte (MB)
+	OutFile: File to be written
+	Credential: Created by Get-Credential, used to authenticate with the remote server for this request
+Start-BitsTransfer: Uses Background Intelligent Transfer Service (BITS) on Windows environments to download a file
+	Source: Location of the file to be downloaded, e.g. http://speedtest.tele2.net/10MB.zip
+	Destination: File to be written
+	Credential: Created by Get-Credential, used to authenticate with the remote server for this request
+	Asynchronous: Specifies whether or not a file is downloaded interactively
+Get-BitsTransfer: Lists active download jobs for BITS
+
+Interacting with Remote Computers ########################
+
+ Store the credentials to interact with the remote computers by executing the following command:
+ $credentials = Get-Credential
+
+Downloading Files From Remote Computers ###################
+
+
+Downloading Files From Web Servers Using PowerShell #######################
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+##################### mod 7 lesson 3 ####################
+################# Bash Scripting ######################
 
 
 
