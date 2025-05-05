@@ -305,7 +305,7 @@ Get-Credential: Stores credentials after prompting for them; used with commands 
 Invoke-Command: Runs a code block or script file on the local or a specified remote machine; uses the following parameters:
 	Credential: Created via Get-Credential; used to connect to the remote computer
 	ComputerName: Name of the computer to run commands on; accepts multiple computer names; must be resolvable via Domain Name System (DNS) or other name lookup
-	ScriptBlock: Block of code to be run
+	ScriptBlock: Block of code to be run follow with { commands }
 	FilePath: File containing the script to be run
 	Session: Session to invoke a command on (exclusive with ComputerName)
 New-PSSession (PowerShell Session): Creates a reusable session with the remote computer(s), variables, etc. on the remote session to be saved for the duration of the session.
@@ -329,15 +329,18 @@ Interacting with Remote Computers ########################
 
 Downloading Files From Remote Computers ###################
 
-
+invoke-webrequest -uri http
+start-bitstransfer -source -destination
 Downloading Files From Web Servers Using PowerShell #######################
 
 
+invoke-webrequest -uri http
+start-bitstransfer -source -destination
 
 ##################### mod 7 lesson 3 ####################
 ################# Bash Scripting ######################
 
-
+image saved x3
 
 
 
