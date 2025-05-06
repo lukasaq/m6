@@ -334,7 +334,7 @@ start-bitstransfer -source -destination
 Downloading Files From Web Servers Using PowerShell #######################
 
 
-invoke-webrequest -uri http
+invoke-webrequest -uri http -outfile
 start-bitstransfer -source -destination
 
 ##################### mod 7 lesson 3 ####################
